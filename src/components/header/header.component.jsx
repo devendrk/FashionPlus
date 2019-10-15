@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
 import { auth } from "../../firebase/firebase.utils";
 
 import { ReactComponent as Logo } from "../../assetes/crown.svg";
@@ -28,5 +30,9 @@ function Header({ currentUser }) {
     </div>
   );
 }
+// state is top lovel root reducer or the main state (single source of truth)
+const mapStateToprops = state => ({
+  currentUser: state.user.currentUser
+});
 
-export default Header;
+export default connect(mapStateToprops)(Header);
