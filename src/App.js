@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import Header from "./components/headeer/header.component";
 import HomePage from "./pages/homepage/homepage.component";
 import ShopePage from "./pages/shop/shop-page.component";
-import "./app.css";
+import "./App.scss";
 
 function App() {
   return (
