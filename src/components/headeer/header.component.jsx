@@ -8,6 +8,9 @@ import { ReactComponent as Logo } from "../../assets/logo.svg";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown";
 
+import { selectCartDropdown } from "../../redux/cart/cart.selector";
+import { currentUser, selectCurrentUser } from "../../redux/user/user.selector";
+
 import "./header.scss";
 
 export const Header = ({ currentUser, toggleCartDropdown }) => {
@@ -41,8 +44,8 @@ export const Header = ({ currentUser, toggleCartDropdown }) => {
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.user.currentUser,
-    toggleCartDropdown: state.cart.hidden,
+    currentUser: selectCurrentUser(state),
+    toggleCartDropdown: selectCartDropdown(state),
   };
 };
 
