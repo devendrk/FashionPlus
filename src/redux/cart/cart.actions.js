@@ -1,8 +1,7 @@
-import cartTypes from "./cartTypes";
-import cartActionTypes from "./cartTypes";
+import cartActionTypes from "./cart.types";
 
 export const toggleCartDropdown = () => {
-  return { type: cartTypes.TOGGLE_CART_HIDDEN };
+  return { type: cartActionTypes.TOGGLE_CART_HIDDEN };
 };
 
 export const addItem = (item) => {

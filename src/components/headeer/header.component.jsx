@@ -11,7 +11,6 @@ import CartDropdown from "../cart-dropdown/cart-dropdown";
 import "./header.scss";
 
 export const Header = ({ currentUser, toggleCartDropdown }) => {
-  console.log("header props", currentUser);
   return (
     <div className="header">
       <Link className="logo-container" to="/">
