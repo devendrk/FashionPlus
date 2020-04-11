@@ -34,7 +34,6 @@ class App extends Component {
     this.unsuscribeFromAUth();
   }
   render() {
-    console.log("app current", this.props.currentUser);
     return (
       <div>
         <Header />
