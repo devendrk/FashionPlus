@@ -6,10 +6,11 @@ import Header from "./components/headeer/header.component";
 import HomePage from "./pages/homepage/homepage.component";
 import ShopPage from "./pages/shop/shop-page.component";
 import SignInAndSignUpPage from "./pages/signin-signup/signin-signup.component";
+import CheckoutPage from "./pages/checkout/checkout.component";
 //action
 import { setCurrentUser } from "./redux/user/user.actions";
-
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
+import { selectCurrentUser } from "./redux/user/user.selector";
 import "./App.scss";
 
 class App extends Component {
@@ -33,13 +34,13 @@ class App extends Component {
     this.unsuscribeFromAUth();
   }
   render() {
-    console.log("app current", this.props.currentUser);
     return (
       <div>
         <Header />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
+          <Route exact path="/checkout" component={CheckoutPage} />
           <Route
             exact
             path="/signin"
@@ -57,9 +58,9 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({ user }) => {
+const mapStateToProps = (state) => {
   return {
-    currentUser: user.currentUser,
+    currentUser: selectCurrentUser(state),
   };
 };
 
