@@ -1,3 +1,0 @@
-clear local storage of redux persist
-localStorage.clear('persist:persistedStore')
-
