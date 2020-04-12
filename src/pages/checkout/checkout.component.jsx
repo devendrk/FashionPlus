@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
+import StripeCheckOutButton from "../../components/stripe-button/stripe-button";
 
 import {
   selectCartItems,
@@ -33,6 +34,16 @@ const CheckoutPage = ({ cartItems, total }) => (
       <CheckoutItem key={cartItem.id} cartItem={cartItem} />
     ))}
     <div className="total">TOTAL: ${total}</div>
+    <StripeCheckOutButton price={total} />
+    <div className="test-warning">
+      * Please use this fake credit card number for payment *
+      <br />
+      credit card no: 4242 4242 4242 4242
+      <br />
+      expiry date : 12/21 ( or any future date)
+      <br />
+      cvv: 123
+    </div>
   </div>
 );
 
