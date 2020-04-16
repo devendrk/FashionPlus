@@ -28,7 +28,7 @@ This project is the out come of udemy course offered by Andrei Neagoie and Yihua
     npm install
     ```
 
-    3. **To start the poject in browser**
+3.  **To start the poject in browser**
       ```shell
     npm start
     ```
