@@ -9,20 +9,17 @@ import SignInAndSignUpPage from "./pages/signin-signup/signin-signup.component";
 import CheckoutPage from "./pages/checkout/checkout.component";
 //action
 import { setCurrentUser } from "./redux/user/user.actions";
-import {
-  auth,
-  createUserProfileDocument,
-  addCollectionAndDocuments,
-} from "./firebase/firebase.utils";
+import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { selectCurrentUser } from "./redux/user/user.selector";
 
-import { selectCollectionForPreview } from "./redux/shop/shop.selector";
+//import { selectCollectionForPreview } from "./redux/shop/shop.selector";
 import "./App.scss";
 
 class App extends Component {
   unsuscribeFromAUth = null;
   componentDidMount() {
-    const { setCurrentUser, collectionsArray } = this.props;
+    const { setCurrentUser } = this.props;
+    //const { collectionsArray } = this.props;
     this.unsuscribe = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
@@ -34,10 +31,11 @@ class App extends Component {
         });
       }
       setCurrentUser(userAuth);
-      addCollectionAndDocuments(
-        "collection",
-        collectionsArray.map(({ title, items }) => ({ title, items }))
-      );
+      /** ADD NEW COLLECTION IN THE FIRE STORE FOR THE FIRST TME:  uncomment only if new big collection need to be updated in the db*/
+      // addCollectionAndDocuments(
+      //   "collection",
+      //   collectionsArray.map(({ title, items }) => ({ title, items }))
+      // );
     });
   }
   componentWillUnmount() {
@@ -71,7 +69,7 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     currentUser: selectCurrentUser(state),
-    collectionsArray: selectCollectionForPreview(state),
+    // collectionsArray: selectCollectionForPreview(state),
   };
 };
 
